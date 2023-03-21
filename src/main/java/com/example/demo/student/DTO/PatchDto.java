@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class patchDto {
+public class PatchDto {
     String name;
 
     String email;
