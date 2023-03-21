@@ -1,10 +1,9 @@
 package com.example.demo.student;
 
+import com.example.demo.student.DTO.PatchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @RestController()
@@ -28,6 +27,15 @@ public class StudentController {
         studentService.addNewStudent(student);
     }
 
+    @PatchMapping(path = "{studentId}")
+    public void updateStudentById(
+            @PathVariable("studentId") Long studentId,
+            @RequestBody(required = false) PatchDto body) {
+//        System.out.println(body.getClass());
+//        System.out.println(body.getName());
+
+        studentService.updateStudentById(studentId, body);
+    }
     @DeleteMapping(path = "{studentId}")
     public void deleteStudentById(@PathVariable Long studentId) {
         studentService.deleteStudentById(studentId);
